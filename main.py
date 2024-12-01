@@ -19,6 +19,7 @@ def main():
                 return
             
         screen.fill('black')      #fill screen with black
+        ship.update(dt)
         ship.draw(screen)
         pygame.display.flip()       #refresh screen
         dt = clock.tick(60)/1000             #60 FPS in s
