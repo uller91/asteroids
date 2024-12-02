@@ -8,6 +8,9 @@ def main():
     #print(f"Screen height: {SCREEN_HEIGHT}")
     
     pygame.init()
+    updatable = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
+    Player.containers = (updatable, drawable)
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     clock = pygame.time.Clock()
     dt = 0
@@ -19,8 +22,10 @@ def main():
                 return
             
         screen.fill('black')      #fill screen with black
-        ship.update(dt)
-        ship.draw(screen)
+        for items in updatable:
+            items.update(dt)
+        for items in drawable:
+            items.draw(screen)
         pygame.display.flip()       #refresh screen
         dt = clock.tick(60)/1000             #60 FPS in s
         #print(dt)
