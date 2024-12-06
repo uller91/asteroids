@@ -1,4 +1,5 @@
 import pygame
+import sys
 from circleshape import CircleShape
 from constants import *
 

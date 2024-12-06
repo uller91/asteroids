@@ -1,4 +1,5 @@
 import pygame
+import sys
 from constants import *
 from player import *
 from asteroid import *
@@ -30,6 +31,8 @@ def main():
         screen.fill('black')      #fill screen with black
         for items in updatable:
             items.update(dt)
+        for items in asteroids:
+            items.collision(ship)
         for items in drawable:
             items.draw(screen)
         pygame.display.flip()       #refresh screen
