@@ -34,8 +34,18 @@ def main():
         screen.fill('black')      #fill screen with black
         for items in updatable:
             items.update(dt)
+            
         for items in asteroids:
-            items.collision(ship)
+            if items.collision(ship):
+                print("Game over!")
+                sys.exit()
+
+            for bullet in shots:
+                if items.collision(bullet):
+                    print("Shot!")
+                    items.kill()
+                    bullet.kill()
+
         for items in drawable:
             items.draw(screen)
         pygame.display.flip()       #refresh screen
